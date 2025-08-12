@@ -1,0 +1,81 @@
+/* Center everything */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+main {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Board container */
+.container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Game grid */
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+}
+
+/* Each cell */
+.box {
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.box:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+}
+
+/* Reset button */
+.reset {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: white;
+  color: #333;
+  transition: 0.2s;
+}
+
+.reset:hover {
+  background: #333;
+  color: white;
+}
+
+/* Responsive for mobile */
+@media (max-width: 500px) {
+  .game {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+  }
+  .box {
+    font-size: 2rem;
+  }
+}
