@@ -1,5 +1,6 @@
 let boxes = document.querySelectorAll('.box');
 let resetBtn = document.querySelector('#reset');
+let message = document.querySelector('#message');
 
 let turn0 = true;
 
@@ -36,21 +37,20 @@ const checkWinner = () => {
         let thirdBox = boxes[pattern[2]].textContent;
 
         if (firstBox !== '' && firstBox === secondBox && secondBox === thirdBox) {
-            setTimeout(() => {
-                alert(`🎉 Winner is ${firstBox}!`);
-                resetGame();
-            }, 200); // slight delay so last move shows
+            message.textContent = `🎉 Winner is ${firstBox}!`;
+            disableAllBoxes();
             return;
         }
     }
 
-    // Check draw
+    // Draw check
     if ([...boxes].every(box => box.textContent !== '')) {
-        setTimeout(() => {
-            alert("It's a draw!");
-            resetGame();
-        }, 200);
+        message.textContent = "🤝 It's a draw!";
     }
+};
+
+const disableAllBoxes = () => {
+    boxes.forEach((box) => box.disabled = true);
 };
 
 const resetGame = () => {
@@ -59,6 +59,7 @@ const resetGame = () => {
         box.disabled = false;
     });
     turn0 = true;
+    message.textContent = '';
 };
 
 resetBtn.addEventListener('click', resetGame);
